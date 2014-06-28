@@ -75,7 +75,7 @@ public function save_post( $post_id )
 
 public function get_the_subcontent() {
 	global $post;
-	$subcontent = get_post_meta( $post->ID, $this->meta_key, true );
+	$subcontent = do_shortcode(get_post_meta( $post->ID, $this->meta_key, true ));
 	if ( $this->wpautop == true ) {
 		return wpautop( $subcontent );
 	} else {
