@@ -10,10 +10,10 @@ Author URI: http://en.nskw-style.com
 
 class SubContentEditor {
 
-public $meta_key = 'subcontent';
+public $meta_key   = 'subcontent';
 public $meta_label = 'Subcontent';
-public $post_type = array( 'page' );
-public $wpautop = true;
+public $post_type  = array( 'page' );
+public $wpautop    = true;
 
 // add actions
 function __construct()
@@ -24,10 +24,10 @@ function __construct()
 }
 
 public function init() {
-	$this->meta_key = apply_filters( 'nskw-sce-meta_key', $this->meta_key );
-	$this->post_type = apply_filters( 'nskw-sce-post_type', $this->post_type );
+	$this->meta_key   = apply_filters( 'nskw-sce-meta_key', $this->meta_key );
+	$this->post_type  = apply_filters( 'nskw-sce-post_type', $this->post_type );
 	$this->meta_label = apply_filters( 'nskw-sce-meta_label', $this->meta_label );
-	$this->wpautop = apply_filters( 'nskw-sce-wpautop', $this->wpautop );
+	$this->wpautop    = apply_filters( 'nskw-sce-wpautop', $this->wpautop );
 }
 
 // display the editor
@@ -46,9 +46,9 @@ public function edit_form_after_editor()
 	
 	$sc_arg = array(
 		'textarea_rows' => apply_filters( 'nskw-sce-row', 10 ),
-		'wpautop' => $this->wpautop,
+		'wpautop'       => $this->wpautop,
 		'media_buttons' => apply_filters( 'nskw-sce-media_buttons', true ),
-		'tinymce' => apply_filters( 'nskw-sce-tinymce', true ),
+		'tinymce'       => apply_filters( 'nskw-sce-tinymce', true ),
 	);
 	
 	echo '<h3 class="subcontentLabel" style="margin-top:15px;">' . $this->meta_label . '</h3>';
@@ -75,7 +75,7 @@ public function save_post( $post_id )
 
 public function get_the_subcontent() {
 	global $post;
-	$subcontent = do_shortcode(get_post_meta( $post->ID, $this->meta_key, true ));
+	$subcontent = do_shortcode( get_post_meta( $post->ID, $this->meta_key, true ) );
 	if ( $this->wpautop == true ) {
 		return wpautop( $subcontent );
 	} else {
@@ -83,7 +83,7 @@ public function get_the_subcontent() {
 	}
 }
 
-}// class ここまで
+}// class
 $nskwSCE = new SubContentEditor();
 
 function get_the_subcontent() {
